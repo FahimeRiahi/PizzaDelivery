@@ -1,0 +1,15 @@
+<section class="flex-column main-center cross-center">
+  <h2>
+    Pizza delivery
+  </h2>
+  <form class="flex-row">
+    <select [(ngModel)]="type" name="type" class="type" required>
+      <option value="">Select Favorite Pizza Type</option>
+      <option *ngFor="let type of types">{{ type }} </option>
+    </select>
+
+    <button (click)="recommendedComponent.findPizza()">Find</button>
+  </form>
+</section>
+<app-recommended #recommendedComponent></app-recommended>
+

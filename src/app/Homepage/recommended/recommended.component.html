@@ -1,0 +1,9 @@
+<section>
+  <!--Recommended Pizza Menu-->
+  <div class="flex-row main-center recommended">
+    <h4>View all</h4>
+  </div>
+  <div class="flex-row  resturant-container">
+    <app-card *ngFor="let pizza of pizzaList" [food]="pizza"></app-card>
+  </div>
+</section>
