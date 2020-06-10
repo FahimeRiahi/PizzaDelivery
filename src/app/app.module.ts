@@ -5,6 +5,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatListModule  } from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 // Services
 import {InMemoryDataService} from './services/in-memory-data-service.service';
@@ -47,6 +49,8 @@ import {BaseComponent} from './base-component/base.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatListModule,
+    MatGridListModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}
     )],
   providers: [],

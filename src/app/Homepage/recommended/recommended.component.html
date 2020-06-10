@@ -1,9 +1,23 @@
 <section>
   <!--Recommended Pizza Menu-->
-  <div class="flex-row main-center recommended">
-    <h4>View all</h4>
-  </div>
-  <div class="flex-row  resturant-container">
-    <app-card *ngFor="let pizza of pizzaList" [food]="pizza"></app-card>
-  </div>
+
+  <mat-grid-list cols="3" rowHeight="2:2">
+    <mat-grid-tile *ngFor="let pizza of pizzaList">
+      <div class="card">
+        <div class="card-detail">
+          <img src="{{pizza.image}}"/>
+
+          <p>
+            {{pizza.name}}
+          </p>
+          <p>{{pizza.rating}} Stars</p>
+
+          <button type="button" class="btn btn-light">Add</button>
+
+
+        </div>
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
 </section>

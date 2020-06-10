@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tutorial": {
+    "pizza-delivery": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tutorial",
+            "outputPath": "dist/pizza-delivery",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +24,14 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -63,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tutorial:build"
+            "browserTarget": "pizza-delivery:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tutorial:build:production"
+              "browserTarget": "pizza-delivery:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tutorial:build"
+            "browserTarget": "pizza-delivery:build"
           }
         },
         "test": {
@@ -111,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "tutorial:serve"
+            "devServerTarget": "pizza-delivery:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "tutorial:serve:production"
+              "devServerTarget": "pizza-delivery:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "tutorial"
+  "defaultProject": "pizza-delivery"
 }
