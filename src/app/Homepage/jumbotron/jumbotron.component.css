@@ -25,6 +25,8 @@ button {
 .type {
   border-right: #420000 solid 1px;
   border-radius: 2.5em 0em 0em 2.5em;
+  width: 300px;
+  padding-left: 26px;
 }
 button {
   border-radius: 0em 2.5em 2.5em 0em;
@@ -37,6 +39,7 @@ button {
     background-size: contain;
     background-repeat: round;
   }
+
   h2 {
     font-size: 2em;
   }
@@ -47,9 +50,7 @@ button {
     flex-basis: 33%;
     font-size: 1.3em;
   }
-
-  form {
-    width: 80%;
-    /* text-align: center; */
-    padding-left: 30%;  }
 }
+
+
+

@@ -3,10 +3,11 @@
     Pizza delivery
   </h2>
   <form class="flex-row">
-    <select [(ngModel)]="type" name="type" class="type" required>
-      <option value="">Select Favorite Pizza Type</option>
-      <option *ngFor="let type of types">{{ type }} </option>
-    </select>
+<!--    <select [(ngModel)]="type" name="type" class="type" required>-->
+<!--      <option value="">Select Favorite Pizza Type</option>-->
+<!--      <option *ngFor="let type of types">{{ type }} </option>-->
+<!--    </select>-->
+    <input [(ngModel)]="type" name="type" class="type" required placeholder="Search favorite Pizza Type"/>
 
     <button (click)="recommendedComponent.findPizza()">Find</button>
   </form>
