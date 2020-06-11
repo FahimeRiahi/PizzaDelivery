@@ -18,9 +18,14 @@ export class RecommendedComponent extends BaseComponent implements OnInit {
     });
   }
 
-  findPizza() {
-    this.service.searchPizza(this.pizzaType).subscribe((res: any) => {
+  findPizza(searchTerm) {
+    this.service.searchPizza(searchTerm.value).subscribe((res: any) => {
       this.pizzaList = res;
 
-    });  }
+    });
+  }
+
+  addToCart(id) {
+    console.log(id);
+  }
 }

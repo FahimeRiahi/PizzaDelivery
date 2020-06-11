@@ -23,8 +23,7 @@ export class PizzaService {
     const url = `assets/pizza.json`;
     // Add safe, URL encoded search parameter if there is a search term
     const options = term ?
-      {params: new HttpParams().set('init', term[0]).set('base', term[1]).set('type', term[2])} : {};
-    console.log(options);
+      {params: new HttpParams().set('name', term)} : {};
     return this.http.get<Pizza[]>(this.pizzaURL, options)
       .pipe(
         tap(_ => this.log(`fetched pizza based oon search term ${term}`)),
