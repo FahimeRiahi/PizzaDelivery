@@ -1,15 +1,58 @@
 <header role="banner">
   <!--First Header with wine background-->
-  <div class="toolbar">
-    <img  alt="Delivery Van Logo" src="../../assets/food-van.png" />
-    <h1>Deliver</h1>
-    <nav>
+  <mat-toolbar style="background-color: #420000; color: white">
+    <div class="col-md-3" style="display: contents">
+      <img alt="Delivery Van Logo" src="../../assets/food-van.png"/>
+      <h1>Deliver</h1>
+    </div>
+    <nav class="col-md-6">
       <ul class="flex-row">
         <li>Home</li>
         <li>My Orders</li>
-        <li class="last">Card</li>
+
       </ul>
     </nav>
-  </div>
+    <div class="col-md-3 text-right">
+       <span class="fill-remaining-space">
+    <button (click)="loadCartList()" class="shopping-cart" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon [matBadgeHidden]="cartList && cartList.length == 0" [matBadge]="cartList ? cartList.length : ''"
+                matBadgeColor="warn" style="color: white">shopping_cart</mat-icon>
 
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+
+            <div *ngIf="!cartList"><span>No Order</span></div>
+          <mat-list *ngIf="cartList">
+            <div mat-subheader>My Pizza Order List </div>
+            <mat-list-item>
+              <div class="col-md-2" mat-card-image></div>
+              <div class="col-md-2">Name</div>
+              <div class="col-md-2">Count</div>
+              <div class="col-md-2"> Price </div>
+            </mat-list-item>
+            <mat-list-item *ngFor="let item of  cartList">
+              <img class="col-md-2" mat-card-image src="{{item.pizza.image}}"/>
+              <div class="col-md-2">{{item.pizza.name}}</div>
+              <div class="col-md-2">{{item.count}}</div>
+              <div class="col-md-6"> {{item.pizza.price | currency:'USD'}}
+                /{{convertCurrency(item.pizza.price) | currency:'EUR'}} </div>
+            </mat-list-item>
+            </mat-list>
+      <mat-divider></mat-divider>
+      <div class="row shopping-cart-footer">
+
+        <div class="col-md-6">
+        <label>Total Count:{{totalSum(cartList, 'count')}}</label>
+        <label>Total price: {{totalSum(cartList, 'price') | currency:'USD'}}
+          /{{ convertCurrency(totalSum(cartList, 'price')) | currency:'EUR'}}</label>
+      </div>
+      <div class="col-md-6 text-right">
+        <button mat-raised-button>Submit Order</button>
+      </div>
+      </div>
+
+    </mat-menu>
+       </span>
+    </div>
+  </mat-toolbar>
 </header>

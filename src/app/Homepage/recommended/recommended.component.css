@@ -3,20 +3,24 @@
   max-width: 2em;
   max-height: 2em;
 }
+
 .minor p {
   margin: 0em 1em;
   font-size: 0.8em;
 }
+
 .minor {
   width: 75%;
   margin: 2em auto;
   justify-content: space-evenly;
 }
+
 .resturant-container {
   width: 90%;
   margin: 2em auto;
   flex-direction: column;
 }
+
 @media screen and (min-width: 1024px) {
   /* Section Before Recommended*/
   .minor {
@@ -56,16 +60,53 @@
     flex-direction: row;
   }
 }
-img{
-  width:100%;
+
+img {
+  width: 100%;
   padding-top: 20px;
 }
-.card{
+
+.card {
   /* border:solid 1px #0ef32d; */
   margin: 1em
 }
-.card-detail{
-  padding: 2em;
+
+.card-detail {
+  padding: 48px 2em;
   box-shadow: lavender 0.2em 0.3em;
-  height: 350px;
+  height: auto;
 }
+.add-to-cart-button
+{
+  width: 100%;
+}
+
+.mat-mini-fab {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.material-icons {
+  font-size: 20px !important;
+}
+
+.mat-form-field-flex {
+
+  width: 50% !important;
+}
+
+
+.pizza-count {
+  float: right;
+  margin-top: 15px;
+  border-radius: 30px;
+  border: 1px solid #eee;
+  padding: 0 5px;
+  text-align: center;
+}
+.pizza-count:focus
+{
+  border:none!important;
+}
+
+

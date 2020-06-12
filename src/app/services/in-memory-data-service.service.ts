@@ -9,8 +9,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/1.png',
-        priceInDollar: 200,
-        priceInEuro: 180,
+        price: 200,
         base: 'Thin crust',
         type: 'Cheese burst'
       },
@@ -20,8 +19,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: '././assets/2.png',
-        priceInDollar: 300,
-        priceInEuro: 250,
+        price: 250,
         base: 'Multigrain',
         type: 'Cheese burst'
       },
@@ -31,8 +29,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'n',
         pizza: 'Non Veg',
         image: './assets/3.png',
-        priceInDollar: 200,
-        priceInEuro: 180,
+        price: 180,
         base: 'Regular base',
         type: 'Cheese burst'
       },
@@ -42,8 +39,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/4.png',
-        priceInDollar: 250,
-        priceInEuro: 230,
+        price: 230,
         base: 'Flat bread',
         type: 'Cheese burst'
       },
@@ -53,8 +49,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/5.png',
-        priceInDollar: 200,
-        priceInEuro: 180,
+        price: 180,
         base: 'Thin crust',
         type: 'Cheese burst'
       },
@@ -64,8 +59,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'n',
         pizza: 'Non Veg',
         image: './assets/6.png',
-        priceInDollar: 350,
-        priceInEuro: 230,
+        price: 230,
         base: 'Flat bread',
         type: 'Cheese burst'
       },
@@ -75,8 +69,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/7.png',
-        priceInDollar: 150,
-        priceInEuro: 130,
+        price: 130,
         base: 'Thin crust',
         type: 'No Cheese'
       },
@@ -86,8 +79,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'n',
         pizza: 'Non Veg',
         image: './assets/8.png',
-        priceInDollar: 400,
-        priceInEuro: 350,
+        price: 350,
         base: 'Multigrain',
         type: 'Cheese burst'
       },
@@ -97,8 +89,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/1.png',
-        priceInDollar: 250,
-        priceInEuro: 230,
+        price: 230,
         base: 'Thin crust',
         type: 'Cheese burst'
       },
@@ -108,8 +99,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/2.png',
-        priceInDollar: 200,
-        priceInEuro: 180,
+        price: 180,
         base: 'Flat bread',
         type: 'Cheese Topping'
       },
@@ -119,8 +109,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/1.png',
-        priceInDollar: 200,
-        priceInEuro: 180,
+        price: 180,
         base: 'Thin crust',
         type: 'Cheese burst'
       },
@@ -130,8 +119,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: '././assets/2.png',
-        priceInDollar: 300,
-        priceInEuro: 280,
+        price: 280,
         base: 'Multigrain',
         type: 'Cheese burst'
       },
@@ -141,8 +129,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'n',
         pizza: 'Non Veg',
         image: './assets/3.png',
-        priceInDollar: 400,
-        priceInEuro: 380,
+        price: 380,
         base: 'Regular base',
         type: 'Cheese burst'
       },
@@ -152,8 +139,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/4.png',
-        priceInDollar: 300,
-        priceInEuro: 280,
+        price: 280,
         base: 'Flat bread',
         type: 'Cheese burst'
       },
@@ -163,8 +149,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'n',
         pizza: 'Non Veg',
         image: './assets/5.png',
-        priceInDollar: 500,
-        priceInEuro: 480,
+        price: 480,
         base: 'Thin crust',
         type: 'Cheese burst'
       },
@@ -174,8 +159,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/6.png',
-        priceInDollar: 350,
-        priceInEuro: 320,
+        price: 320,
         base: 'Flat bread',
         type: 'Cheese burst'
       },
@@ -185,8 +169,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/7.png',
-        priceInDollar: 250,
-        priceInEuro: 230,
+        price: 230,
         base: 'Regular base',
         type: 'Cheese burst'
       },
@@ -196,8 +179,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'n',
         pizza: 'Veg',
         image: './assets/8.png',
-        priceInDollar: 400,
-        priceInEuro: 380,
+        price: 380,
         base: 'Multigrain',
         type: 'Cheese burst'
       },
@@ -207,8 +189,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/1.png',
-        priceInDollar: 250,
-        priceInEuro: 230,
+        price: 230,
         base: 'Thin crust',
         type: 'Cheese burst'
       },
@@ -218,8 +199,7 @@ export class InMemoryDataService implements InMemoryDbService {
         init: 'v',
         pizza: 'Veg',
         image: './assets/2.png',
-        priceInDollar: 600,
-        priceInEuro: 580,
+        price: 580,
         base: 'Multigrain',
         type: 'Cheese Topping'
       }

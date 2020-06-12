@@ -7,7 +7,7 @@
 <!--      <option value="">Select Favorite Pizza Type</option>-->
 <!--      <option *ngFor="let type of types">{{ type }} </option>-->
 <!--    </select>-->
-    <input [(ngModel)]="type" #searchTerm name="type" class="type" required placeholder="Search favorite Pizza Type"/>
+    <input [(ngModel)]="type" #searchTerm name="type" class="type" required placeholder="Search your favorite Pizza"/>
 
     <button (click)="recommendedComponent.findPizza(searchTerm)">Find</button>
   </form>

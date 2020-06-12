@@ -1,13 +1,12 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatListModule  } from '@angular/material/list';
+import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
-
 // Services
 import {InMemoryDataService} from './services/in-memory-data-service.service';
 // Components
@@ -25,6 +24,12 @@ import {TestimoniesCardComponent} from './cards/testimonies-card/testimonies-car
 import {HomeComponent} from './Homepage/home.component';
 import {FooterComponent} from './footer/footer.component';
 import {BaseComponent} from './base-component/base.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -52,7 +57,7 @@ import {BaseComponent} from './base-component/base.component';
     MatListModule,
     MatGridListModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}
-    )],
+    ), MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatBadgeModule, MatButtonModule],
   providers: [],
   bootstrap: [AppComponent]
 })

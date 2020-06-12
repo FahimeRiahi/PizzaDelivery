@@ -1,5 +1,5 @@
 section {
-  background-image: url('../../../assets/Mask Group 4.png');
+  background-image: url('../../../assets/Mask Group 4.png') ;
   min-height: 50vh;
   background-size: cover;
   background-repeat: round;
@@ -34,10 +34,7 @@ button {
 }
 
 @media screen and (min-width: 1024px) {
-  section {
-    background-size: contain;
-    background-repeat: round;
-  }
+
 
   h2 {
     font-size: 2em;

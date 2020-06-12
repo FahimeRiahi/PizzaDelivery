@@ -1,24 +1,25 @@
 <section>
   <!--Recommended Pizza Menu-->
 
-  <mat-grid-list cols="3" rowHeight="2:3">
+  <mat-grid-list cols="3" rowHeight="2:2">
     <mat-grid-tile *ngFor="let pizza of pizzaList">
       <div class="card">
         <mat-grid-tile-header>
-          <h3>{{pizza.type}}</h3>
+          <h3>{{pizza.name}}</h3>
         </mat-grid-tile-header>
         <div class="card-detail">
           <img src="{{pizza.image}}"/>
-
           <p>
-            {{pizza.name}}
+            <label style="padding-top: 15px;">{{pizza.price | currency:'USD'}}/{{convertCurrency(pizza.price) | currency:'EUR'}} </label>
+            <input class="pizza-count" type="number" #pizzaCount min="0" max="10" step="1"/>
+
           </p>
-          <label>Price: {{pizza.priceInEuro}} (EUR)/{{pizza.priceInDollar}} ($)</label>
 
         </div>
-        <mat-grid-tile-footer (click)="addToCart(pizza.id)"  class="btn btn-light justify-content-center">Add to Cart
-<!--          <button type="button" class="btn btn-light">Add</button>-->
-        </mat-grid-tile-footer>
+        <button (click)="addToCart(pizza , pizzaCount)"
+                class="add-to-cart-button btn btn-light justify-content-center mat-grid-tile-footer">
+          Add to cart
+        </button>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
