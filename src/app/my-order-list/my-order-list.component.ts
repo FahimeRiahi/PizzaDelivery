@@ -16,16 +16,21 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 })
 export class MyOrderListComponent extends BaseComponent implements OnInit {
   dataSource: any;
-  columnsToDisplay = ['id', 'description', 'orderDate', 'address.name', 'address.phone', 'address.address'];
+  columnsToDisplay = ['id', 'description', 'orderDate', 'address.name', 'address.phone', 'address.address', 'totalPrice'];
   expandedColumnsToDisplay = ['name', 'count'];
   expandedElement: any;
 
   ngOnInit() {
+    this.loadMyOrders();
+  }
+
+  loadMyOrders() {
     this.service.getAllOrders().subscribe((res: any) => {
       this.dataSource = res.map((x, i) => ({
         id: x.id,
         pizzas: ({pizza: x.pizzas.split(',').map((n, index) => ({name: n, count: x.counts.split(',')[index]}))}),
         description: x.description,
+        totalPrice: x.totalPrice,
         address: this.service.getAddress(x.addressId).then(a => {
           this.dataSource[i].address = a;
         }),

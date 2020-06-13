@@ -2,14 +2,12 @@ header {
   font-size: 0.7em;
 }
 
-.toolbar {
+.mat-toolbar {
   display: flex;
-  background-color: #630f24;
+  background-color: #cc3030;
   color: white;
   align-items: center;
   justify-content: center;
-  background-color: #630f24;
-  background-color: #630f24;
 }
 
 img {
@@ -32,6 +30,7 @@ li a:hover
   box-sizing: content-box;
   background-color: transparent;
   border: none;
+  outline: none;
 }
 .shopping-cart-footer
 {

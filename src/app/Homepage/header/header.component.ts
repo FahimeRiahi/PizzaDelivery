@@ -3,7 +3,7 @@ import {BaseComponent} from '../../base-component/base.component';
 import {MatMenu} from '@angular/material/menu';
 import {Observable, Subject, Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
-import {FormGroup, Validators} from "@angular/forms";
+import {Validators} from "@angular/forms";
 
 export interface Section {
   name: string;
@@ -48,10 +48,10 @@ export class HeaderComponent extends BaseComponent implements OnInit, AfterViewI
   public initialAddressForm() {
     this.addressFormGroup = this.formBuilder.group({
       id: '',
-      address: ['', [Validators.required]],
-      name: ['', [Validators.required]],
+      address: ['', [Validators.required, Validators.minLength(5)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       surname: [''],
-      phoneNumber: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^(\d)(?!\1+$)\d{10}$/)]],
     });
   }
 

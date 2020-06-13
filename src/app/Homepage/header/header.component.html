@@ -1,6 +1,6 @@
 <header role="banner">
   <!--First Header with wine background-->
-  <mat-toolbar style="background-color: #420000; color: white">
+  <mat-toolbar>
     <div class="col-md-3" style="display: contents">
       <img alt="Delivery Van Logo" src="../../assets/food-van.png"/>
       <h1>Deliver</h1>
@@ -77,22 +77,21 @@
         </form>
         </mat-card>
       </div>
-      <mat-divider></mat-divider>
-        <div class="row shopping-cart-footer" *ngIf="fillAddress">
-
-        <div class="col-md-6" *ngIf="deliveryAmount">
-        <label>Delivery Amount:{{deliveryAmount}}</label>
-        <label>Total Amount:{{totalCartPrice + deliveryAmount |  currency:'USD'}}
-          /{{convertCurrency(totalCartPrice + deliveryAmount) | currency:'EUR'}}</label>
-        </div>
+      <mat-divider *ngIf="fillAddress"></mat-divider>
+        <mat-card *ngIf="fillAddress"><div class="row shopping-cart-footer">
           <mat-form-field class="col-md-12 offset-md-1">
               <textarea matInput #description placeholder="Type Description of Order"
                         rows="5"></textarea>
             </mat-form-field>
-          <div class="col-md-6 offset-md-6 text-right">
-            <button (click)="submitOrder(description.value)" mat-raised-button>Submit Order</button>
-          </div>
+           <div class="col-md-12 offset-md-1" *ngIf="deliveryAmount">
+        <label class="col-md-12">Delivery Amount:{{deliveryAmount}}</label>
+        <label class="col-md-12">Total Amount of Order: {{totalCartPrice + deliveryAmount |  currency:'USD'}}
+          /{{convertCurrency(totalCartPrice + deliveryAmount) | currency:'EUR'}}</label>
         </div>
+          <div class="col-md-6 offset-md-6 text-right">
+            <button (click)="submitOrder(description.value , totalCartPrice + deliveryAmount)" mat-raised-button>Submit Order</button>
+          </div>
+        </div></mat-card>
       </div>
     </mat-menu>
        </span>

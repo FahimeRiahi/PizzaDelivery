@@ -100,7 +100,7 @@ img {
   float: right;
   margin-top: 15px;
   border-radius: 30px;
-  border: 1px solid #eee;
+  border: 1px solid rgba(204, 48, 48, 0.68) ;
   padding: 0 5px;
   text-align: center;
 }
@@ -108,5 +108,8 @@ img {
 {
   border:none!important;
 }
+.mat-grid-tile .mat-grid-tile-header,.mat-grid-tile .mat-grid-tile-footer {
 
+  background: rgba(204, 48, 48, 0.68);
+}
 

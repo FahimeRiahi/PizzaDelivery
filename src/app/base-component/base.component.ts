@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PizzaService} from '../services/pizza.service';
 import {Order} from '../services/models';
+import {ToastService} from '../services/toast.service';
+import {MyOrderListComponent} from '../my-order-list/my-order-list.component';
 
 export {FormGroup, Validators} from '@angular/forms';
 
@@ -15,13 +17,13 @@ export class BaseComponent {
   addressFormGroup: FormGroup;
   newAddress: any;
   newOrder = new Order();
+  ordersComponent: MyOrderListComponent;
 
   constructor(protected router: Router,
               protected service: PizzaService,
-              // protected toast: ToastService,
+              protected toast: ToastService,
               protected activeRoute: ActivatedRoute,
               protected cdref: ChangeDetectorRef,
-              // protected ngxSmartModalService: NgxSmartModalService,
               protected formBuilder: FormBuilder,
               // protected confirmationDialogService: ConfirmationDialogService
   ) {
@@ -37,15 +39,19 @@ export class BaseComponent {
       if (pizzaExist) {
         const index = this.cartList.indexOf(pizzaExist);
         this.cartList[index].count = pizzaCount;
+        this.toast.success('Pizza updated in your cart');
+
       } else {
         this.cartList.push({pizza: pizza, count: pizzaCount});
+        this.toast.success('Pizza added to your cart');
+
       }
       localStorage.setItem('cartList', JSON.stringify(this.cartList));
       localStorage.setItem('myOrder', JSON.stringify(this.newOrder));
 
 
     } else {
-      alert('choose count');
+      this.toast.info('Select Count');
     }
   }
 
@@ -61,7 +67,7 @@ export class BaseComponent {
       this.service.createAddress(this.newAddress).subscribe((res: any) => {
         this.newOrder.addressId = this.newAddress.id;
         localStorage.setItem('myOrder', JSON.stringify(this.newOrder));
-
+        this.toast.success('Address saved successfully');
       })
       this.deliveryAmount = Math.round(Math.random() * 70 + 30);
     } else {
@@ -69,18 +75,22 @@ export class BaseComponent {
 
   }
 
-  submitOrder(description: string = '') {
+  submitOrder(description: string = '' , totalPrice) {
     this.newOrder = JSON.parse(localStorage.getItem('myOrder'));
     if (this.newOrder.addressId) {
       this.newOrder.id = Math.round(Math.random() * 100);
       this.newOrder.orderDate = new Date();
       this.newOrder.username = JSON.parse(localStorage.getItem('username'));
       this.newOrder.description = description;
+      this.newOrder.totalPrice = totalPrice;
       this.service.createOrder(this.newOrder).subscribe((res: any) => {
-
+        this.toast.success('Order Completed Successfully');
+        this.router.navigate(['/my-orders']);
+        localStorage.removeItem('myOrder');
+        localStorage.removeItem('cartList');
       });
     } else {
-      alert('fill address');
+      this.toast.info('Fill your complete address to deliver.');
     }
   }
 }

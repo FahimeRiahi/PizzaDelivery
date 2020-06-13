@@ -2,6 +2,7 @@
 
 /* Default Styles from Angular template*/
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~angular2-toaster/toaster.css';
 
 :host {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
@@ -65,4 +66,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-x:
 }
 .mat-list-base .mat-list-item {
   font-size: 12px!important;
+}
+.toast-close-button {
+  top: -1.3em !important;
+}
+
+.toast-info {
+  background-color: deepskyblue !important;
+}
+
+.toast-success {
+  background-color: #30cc30 !important;
+}
+
+.toast-error {
+  background-color: #8a2601 !important;
 }

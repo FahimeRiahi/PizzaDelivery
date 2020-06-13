@@ -6,6 +6,7 @@ export class Order {
   username: string;
   orderDate: Date;
   description: string;
+  totalPrice: number;
 }
 
 export class Address {

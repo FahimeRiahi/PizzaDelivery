@@ -26,8 +26,9 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { MyOrderListComponent } from './my-order-list/my-order-list.component';
-import {MatTableModule} from "@angular/material/table";
+import {MyOrderListComponent} from './my-order-list/my-order-list.component';
+import {MatTableModule} from '@angular/material/table';
+import {ToasterModule, ToasterService} from 'angular2-toaster';
 
 @NgModule({
   declarations: [
@@ -49,9 +50,18 @@ import {MatTableModule} from "@angular/material/table";
     ReactiveFormsModule,
     MatListModule,
     MatGridListModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}
-    ), MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatBadgeModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatTableModule],
-  providers: [],
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
+    ToasterModule,
+    MatIconModule,
+    MatMenuModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatBadgeModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule],
+  providers: [ToasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
