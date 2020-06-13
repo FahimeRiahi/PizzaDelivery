@@ -28,8 +28,6 @@ export class PizzaService {
       {params: new HttpParams().set('name', term)} : {};
     return this.http.get<Pizza[]>(this.pizzaURL, options)
       .pipe(
-        tap(_ => this.log(`fetched pizza based oon search term ${term}`)),
-        catchError(this.handleError<Pizza[]>('searchPizzas', []))
       );
   }
 

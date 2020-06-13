@@ -1,8 +1,9 @@
-# Tutorial
+# Pizza Delivery
 
 ## About Project
 
 It is single paged angular application built for a Pizza Task. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
+Live Demo is available in this link: [Demo](https://pizzadelivery2020.herokuapp.com/)
 
 ## Deployment
 

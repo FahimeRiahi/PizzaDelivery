@@ -1,11 +1,11 @@
 section {
-  background-image: url('../../../assets/Mask Group 4.png') ;
+  background-image: url('../../../assets/bg.jpg') ;
   min-height: 50vh;
   background-size: cover;
-  background-repeat: round;
+  background-repeat: no-repeat;
 }
 h2 {
-  color: #420000;
+  color: #fff;
   font-family: 'Arial';
   text-align: center;
   font-weight: 800;

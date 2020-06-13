@@ -89,7 +89,7 @@
           /{{convertCurrency(totalCartPrice + deliveryAmount) | currency:'EUR'}}</label>
         </div>
           <div class="col-md-6 offset-md-6 text-right">
-            <button (click)="submitOrder(description.value , totalCartPrice + deliveryAmount)" mat-raised-button>Submit Order</button>
+            <button (click)="submitOrder(description.value , totalCartPrice + deliveryAmount);menu.close;" mat-raised-button>Submit Order</button>
           </div>
         </div></mat-card>
       </div>

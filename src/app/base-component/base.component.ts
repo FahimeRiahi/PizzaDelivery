@@ -39,11 +39,11 @@ export class BaseComponent {
       if (pizzaExist) {
         const index = this.cartList.indexOf(pizzaExist);
         this.cartList[index].count = pizzaCount;
-        this.toast.success('Pizza updated in your cart');
+        this.toast.success(`${pizza.name} count updated in your cart`);
 
       } else {
         this.cartList.push({pizza: pizza, count: pizzaCount});
-        this.toast.success('Pizza added to your cart');
+        this.toast.success(`${pizza.name} added to your cart`);
 
       }
       localStorage.setItem('cartList', JSON.stringify(this.cartList));
