@@ -12,7 +12,7 @@ export {FormGroup, Validators} from '@angular/forms';
   selector: 'app-base-component', template: ''
 })
 export class BaseComponent {
-  protected cartList: any[] = [];
+  cartList: any[] = [];
   deliveryAmount: any;
   addressFormGroup: FormGroup;
   newAddress: any;
