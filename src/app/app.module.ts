@@ -15,12 +15,6 @@ import {HeaderComponent} from './Homepage/header/header.component';
 import {JumbotronComponent} from './Homepage/jumbotron/jumbotron.component';
 import {RecommendedComponent} from './Homepage/recommended/recommended.component';
 import {CardComponent} from './cards/Pizza-list/card.component';
-import {HowItWorksComponent} from './Homepage/how-it-works/how-it-works.component';
-import {HowItWorksCardComponent} from './cards/how-it-works/card.component';
-import {PopularResturantsComponent} from './Homepage/popular-resturants/popular-resturants.component';
-import {DownloadAppComponent} from './Homepage/download-app/download-app.component';
-import {TestimoniesComponent} from './Homepage/testimonies/testimonies.component';
-import {TestimoniesCardComponent} from './cards/testimonies-card/testimonies-card.component';
 import {HomeComponent} from './Homepage/home.component';
 import {FooterComponent} from './footer/footer.component';
 import {BaseComponent} from './base-component/base.component';
@@ -30,6 +24,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MyOrderListComponent } from './my-order-list/my-order-list.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -38,15 +36,10 @@ import {MatButtonModule} from '@angular/material/button';
     JumbotronComponent,
     RecommendedComponent,
     CardComponent,
-    HowItWorksComponent,
-    HowItWorksCardComponent,
-    PopularResturantsComponent,
-    DownloadAppComponent,
-    TestimoniesComponent,
-    TestimoniesCardComponent,
     HomeComponent,
     FooterComponent,
-    BaseComponent
+    BaseComponent,
+    MyOrderListComponent
   ],
   imports: [BrowserModule,
     AppRoutingModule,
@@ -57,7 +50,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatListModule,
     MatGridListModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}
-    ), MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatBadgeModule, MatButtonModule],
+    ), MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatBadgeModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatTableModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,7 @@ import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 
 import {Pizza} from './pizza';
+import {Address, Order} from './models';
 
 
 @Injectable({
@@ -12,6 +13,8 @@ import {Pizza} from './pizza';
 })
 export class PizzaService {
   private pizzaURL = 'api/pizzas'; // URL to web api
+  private orderURL = 'api/orders'; // URL to web api
+  private addressURL = 'api/addresses'; // URL to web api
 
   constructor(private http: HttpClient) {
   }
@@ -20,7 +23,6 @@ export class PizzaService {
   searchPizza(term): Observable<Pizza[]> {
     console.log('GET', term);
 
-    const url = `assets/pizza.json`;
     // Add safe, URL encoded search parameter if there is a search term
     const options = term ?
       {params: new HttpParams().set('name', term)} : {};
@@ -38,6 +40,35 @@ export class PizzaService {
       tap(_ => this.log(`fetched pizza id=${id}`)),
       catchError(this.handleError<Pizza>(`getPizza id=${id}`))
     );
+  }
+
+  /** Insert new Order */
+
+  public createOrder(order: Order) {
+    return this.http.post(`${this.orderURL}`, order);
+  }
+
+  /** Insert new address */
+
+  public createAddress(address: Address) {
+    return this.http.post(`${this.addressURL}`, address);
+  }
+
+  /** get All address */
+
+  public getAllAddresses() {
+    return this.http.get(`${this.addressURL}`);
+  }
+
+  async getAddress(id: number): Promise<any> {
+    const url = `${this.addressURL}/${id}`;
+    return await this.http.get<Address>(url).toPromise();
+  }
+
+  /** get All orders */
+
+  public getAllOrders() {
+    return this.http.get(`${this.orderURL}`);
   }
 
   /**

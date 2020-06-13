@@ -1,5 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, ViewChild} from '@angular/core';
 import {BaseComponent} from '../../base-component/base.component';
+import {MatMenu} from '@angular/material/menu';
+import {Observable, Subject, Subscription} from 'rxjs';
+import {filter} from 'rxjs/operators';
+import {FormGroup, Validators} from "@angular/forms";
 
 export interface Section {
   name: string;
@@ -12,11 +16,45 @@ export interface Section {
   styleUrls: ['./header.component.css']
 })
 
-export class HeaderComponent extends BaseComponent implements OnInit {
+export class HeaderComponent extends BaseComponent implements OnInit, AfterViewInit {
 
+  fillAddress = false;
+  @ViewChild('menu', {static: false}) searchMenu!: MatMenu;
+  totalCartPrice: any;
 
   ngOnInit() {
+    this.initialAddressForm();
   }
+
+  ngAfterViewInit() {
+    // Inject our custom logic of menu close
+    (this.searchMenu as any).closed = this.searchMenu.close = this.configureMenuClose(this.searchMenu.close);
+  }
+
+  private configureMenuClose(old: MatMenu['close']): MatMenu['close'] {
+    const upd = new EventEmitter();
+    feed(upd.pipe(
+      filter(event => {
+        if (event === 'click') {
+          // Ignore clicks inside the menu
+          return false;
+        }
+        return true;
+      }),
+    ), old);
+    return upd;
+  }
+
+  public initialAddressForm() {
+    this.addressFormGroup = this.formBuilder.group({
+      id: '',
+      address: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      surname: [''],
+      phoneNumber: ['', [Validators.required]],
+    });
+  }
+
 
   loadCartList() {
     this.cartList = JSON.parse(localStorage.getItem('cartList'));
@@ -30,11 +68,20 @@ export class HeaderComponent extends BaseComponent implements OnInit {
       });
     } else if (field === 'price') {
       items.forEach(function (value) {
-        sum = sum + value.pizza.price;
+        sum = sum + (value.pizza.price * value.count);
       });
+      this.totalCartPrice = sum;
     }
     return sum;
 
   }
 
+}
+
+function feed<T>(from: Observable<T>, to: Subject<T>): Subscription {
+  return from.subscribe(
+    data => to.next(data),
+    err => to.error(err),
+    () => to.complete(),
+  );
 }

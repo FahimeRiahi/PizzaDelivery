@@ -21,7 +21,13 @@ li {
   list-style-type: none;
   padding: 0.5em 0.3em;
 }
-
+li a{
+  color: white;
+}
+li a:hover
+{
+  text-decoration: none;
+}
 .shopping-cart {
   box-sizing: content-box;
   background-color: transparent;

@@ -4,8 +4,7 @@ export class Pizza {
   init: string;
   pizza: string;
   image: string;
-  priceInDollar: number;
-  priceInEuro: number;
+  price: number;
   base: string;
   type: string;
 }

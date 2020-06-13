@@ -7,8 +7,8 @@
     </div>
     <nav class="col-md-6">
       <ul class="flex-row">
-        <li>Home</li>
-        <li>My Orders</li>
+        <li><a [routerLink]="['/home']"> Home</a></li>
+        <li><a [routerLink]="['/my-orders']">My Orders</a></li>
 
       </ul>
     </nav>
@@ -21,8 +21,9 @@
     </button>
     <mat-menu #menu="matMenu" [overlapTrigger]="false">
 
-            <div *ngIf="!cartList"><span>No Order</span></div>
-          <mat-list *ngIf="cartList">
+            <div *ngIf="!cartList"><span style="margin-left: 45%"> No Order</span></div>
+      <div *ngIf="cartList">
+          <mat-list>
             <div mat-subheader>My Pizza Order List </div>
             <mat-list-item>
               <div class="col-md-2" mat-card-image></div>
@@ -44,13 +45,55 @@
         <div class="col-md-6">
         <label>Total Count:{{totalSum(cartList, 'count')}}</label>
         <label>Total price: {{totalSum(cartList, 'price') | currency:'USD'}}
-          /{{ convertCurrency(totalSum(cartList, 'price')) | currency:'EUR'}}</label>
+          /{{ convertCurrency(totalCartPrice) | currency:'EUR'}}</label>
       </div>
       <div class="col-md-6 text-right">
-        <button mat-raised-button>Submit Order</button>
+        <button (click)="fillAddress=true" mat-raised-button>Fill Your Address</button>
       </div>
       </div>
+      <mat-divider></mat-divider>
+      <div class="fill-address" *ngIf="fillAddress">
+        <mat-card style="margin: 15px;">
+          <mat-card-header>Fill Your Address</mat-card-header>
+          <form [formGroup]="addressFormGroup">
+          <div class="row" style="justify-content: center">
+            <mat-form-field class="col-md-10 offset-md-1">
+              <input matInput placeholder="Name" formControlName="name" appearance="outline">
+            </mat-form-field>
+            <mat-form-field class="col-md-10 offset-md-1">
+              <input matInput placeholder="Surname" formControlName="surname" appearance="outline">
+            </mat-form-field>
+            <mat-form-field class="col-md-10 offset-md-1">
+              <input matInput placeholder="Phone Number" formControlName="phoneNumber" appearance="outline">
+            </mat-form-field>
+            <mat-form-field class="col-md-10 offset-md-1">
+              <textarea matInput formControlName="address" placeholder="Address"
+                        rows="5"></textarea>
+            </mat-form-field>
+                        <button mat-raised-button (click)="saveAddress()">Save</button>
 
+
+          </div>
+        </form>
+        </mat-card>
+      </div>
+      <mat-divider></mat-divider>
+        <div class="row shopping-cart-footer" *ngIf="fillAddress">
+
+        <div class="col-md-6" *ngIf="deliveryAmount">
+        <label>Delivery Amount:{{deliveryAmount}}</label>
+        <label>Total Amount:{{totalCartPrice + deliveryAmount |  currency:'USD'}}
+          /{{convertCurrency(totalCartPrice + deliveryAmount) | currency:'EUR'}}</label>
+        </div>
+          <mat-form-field class="col-md-12 offset-md-1">
+              <textarea matInput #description placeholder="Type Description of Order"
+                        rows="5"></textarea>
+            </mat-form-field>
+          <div class="col-md-6 offset-md-6 text-right">
+            <button (click)="submitOrder(description.value)" mat-raised-button>Submit Order</button>
+          </div>
+        </div>
+      </div>
     </mat-menu>
        </span>
     </div>

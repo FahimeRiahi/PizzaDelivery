@@ -1,4 +1,5 @@
 import {InMemoryDbService} from 'angular-in-memory-web-api';
+import {Address, Order} from './models';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
@@ -205,6 +206,8 @@ export class InMemoryDataService implements InMemoryDbService {
       }
 
     ];
-    return {pizzas};
+    const orders: Array<Order> = [];
+    const addresses: Array<Address> = [];
+    return {pizzas, orders, addresses};
   }
 }
