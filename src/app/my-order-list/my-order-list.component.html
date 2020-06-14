@@ -1,4 +1,11 @@
-<mat-card>Detail of My Orders</mat-card>
+<mat-card>
+  <mat-card-header>  Detail of My Orders
+  </mat-card-header>
+<mat-card-content style="margin:16px;">
+  You can see detail of each order by clicking on each row.
+
+</mat-card-content>
+</mat-card>
 <div style="min-height: 500px;">
   <table *ngIf="showOrders" mat-table
          [dataSource]="dataSource" multiTemplateDataRows
