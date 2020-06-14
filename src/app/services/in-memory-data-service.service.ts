@@ -140,7 +140,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 23,
-        name: 'THE BIG PEPPERONI, SAUSAGE & MUSHROOM',
+        name: 'THE BIG PEPPERONI SAUSAGE & MUSHROOM',
         description: 'Huge pie cut into 8 extra-large slices. Authentic soft and foldable New York style dough topped ' +
           'with pepperoni,pork & fennel sausage, mushrooms and mozzarella.',
         init: 'n',
@@ -152,7 +152,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 24,
-        name: 'THE BIG PEPPERONI\n',
+        name: 'THE BIG PEPPERONI',
         description: 'Huge pie cut into 8 extra-large slices.' +
           ' Authentic soft and foldable New York style dough topped with tasty pepperoni & mozzarella',
         init: 'v',
@@ -164,7 +164,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 25,
-        name: 'CHICKEN PARMA\n',
+        name: 'CHICKEN PARMA',
         description: '22 crumbed chicken bites with crispy rasher bacon, creamy mozzarella cheese & rich tomato sauce',
         init: 'n',
         pizza: 'Non Veg',
@@ -208,7 +208,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 29,
-        name: 'BBQ STEAK & BACON\n',
+        name: 'BBQ STEAK & BACON',
         description: 'Tender steak, crispy rasher bacon and red onion topped with BBQ sauce.',
         init: 'v',
         pizza: 'Veg',
@@ -219,7 +219,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 30,
-        name: 'CHICKEN, BACON & AIOLI',
+        name: 'CHICKEN BACON & AIOLI',
         description: 'Tender chicken, crispy rasher bacon, spinach and red onion, ' +
           'topped with a creamy aioli sauce and served on a pizza sauce base with garlic sauce.',
         init: 'v',

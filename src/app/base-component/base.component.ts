@@ -30,6 +30,11 @@ export class BaseComponent {
 
   addToCart(pizza, input) {
     const pizzaCount = parseInt(input.value, 10);
+    const myOrder = JSON.parse(localStorage.getItem('myOrder'));
+    const myCartList = JSON.parse(localStorage.getItem('cartList'));
+    this.newOrder = (myOrder === null || myOrder.counts === '') ? this.newOrder : myOrder;
+    this.cartList = (myCartList === null) ? this.cartList : myCartList;
+
     this.newOrder.pizzas = this.newOrder.pizzas ? this.newOrder.pizzas.concat(',' + pizza.name) : pizza.name.toString();
     this.newOrder.counts = this.newOrder.counts ? this.newOrder.counts.concat(',' + pizzaCount) : pizzaCount.toString();
     if (pizzaCount > 0) {
@@ -53,10 +58,18 @@ export class BaseComponent {
     }
   }
 
-  removeFromCart(index, pizza) {
+  removeFromCart(index, item) {
     this.cartList.splice(index, 1);
+    this.newOrder = JSON.parse(localStorage.getItem('myOrder'));
+    const pizzas = this.newOrder.pizzas.split(',');
+    const counts = this.newOrder.counts.split(',');
+    pizzas.splice(index, 1);
+    counts.splice(index, 1);
+    this.newOrder.pizzas = pizzas.join(',');
+    this.newOrder.counts = counts.join(',');
     localStorage.setItem('cartList', JSON.stringify(this.cartList));
     localStorage.setItem('myOrder', JSON.stringify(this.newOrder));
+
   }
 
   convertCurrency(value) {
@@ -80,6 +93,7 @@ export class BaseComponent {
   }
 
   submitOrder(description: string = '', totalPrice) {
+    debugger;
     this.newOrder = JSON.parse(localStorage.getItem('myOrder'));
     if (this.newOrder.addressId) {
       this.newOrder.id = Math.round(Math.random() * 100);

@@ -11,7 +11,7 @@
           <div style="width: 100%;text-align: center"><img style="width: 180px;height: 180px" src="{{pizza.image}}"/></div>
           <span style="font-size: 12px">{{pizza.description}}</span>
           <p>
-            <label style="padding-top: 15px;">{{(pizza.price | currency:'USD').replace('$','$ ').replace('.',',')}}/{{(convertCurrency(pizza.price) | currency:'EUR').replace('€','€ ').replace('.',',')}} </label>
+            <label style="padding-top: 15px;">{{(pizza.price | currency:'USD').replace('$','$ ').replace('.',',')}} / {{(convertCurrency(pizza.price) | currency:'EUR').replace('€','€ ').replace('.',',')}} </label>
             <input class="pizza-count" type="number" #pizzaCount min="1" max="10" step="1"/>
 
           </p>

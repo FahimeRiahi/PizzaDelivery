@@ -29,7 +29,6 @@ export class HeaderComponent extends BaseComponent implements OnInit, AfterViewI
   clearOrder() {
     this.cartList = [];
     this.initialAddressForm();
-    (this.searchMenu as any).closed = close();
   }
 
   ngAfterViewInit() {
