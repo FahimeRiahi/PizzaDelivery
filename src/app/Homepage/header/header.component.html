@@ -35,8 +35,8 @@
               <img class="col-md-2" mat-card-image src="{{item.pizza.image}}"/>
               <div class="col-md-2" style="font-size: 10px">{{item.pizza.name}}</div>
               <div class="col-md-2">{{item.count}}</div>
-              <div class="col-md-4"> {{(item.pizza.price | currency:'USD').replace('.',',')}}
-                /{{(convertCurrency(item.pizza.price) | currency:'EUR').replace('.',',')}} </div>
+              <div class="col-md-4"> {{(item.pizza.price | currency:'USD').replace('$','$ ').replace('.',',')}}
+                /{{(convertCurrency(item.pizza.price) | currency:'EUR').replace('€','€ ').replace('.',',')}} </div>
              <button class="col-md-2" mat-raised-button (click)="removeFromCart(i,item.pizza)">remove</button>
             </mat-list-item>
             </mat-list>
@@ -86,8 +86,8 @@
             </mat-form-field>
            <div class="col-md-12 offset-md-1" *ngIf="deliveryAmount">
         <label class="col-md-12">Delivery Amount:{{deliveryAmount}}</label>
-        <label class="col-md-12">Total Amount of Order: {{(totalCartPrice + deliveryAmount |  currency:'USD').replace('.',',')}}
-          /{{(convertCurrency(totalCartPrice + deliveryAmount) | currency:'EUR').replace('.',',')}}</label>
+        <label class="col-md-12">Total Amount of Order: {{(totalCartPrice + deliveryAmount |  currency:'USD').replace('$','$ ').replace('.',',')}}
+          /{{(convertCurrency(totalCartPrice + deliveryAmount) | currency:'EUR').replace('€','€ ').replace('.',',')}}</label>
         </div>
           <div class="col-md-6 offset-md-6 text-right">
             <button
