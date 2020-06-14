@@ -86,7 +86,7 @@ export class BaseComponent {
         localStorage.setItem('myOrder', JSON.stringify(this.newOrder));
         this.toast.success('Address saved successfully');
       })
-      this.deliveryAmount = Math.round(Math.random() * 70 + 30);
+      this.deliveryAmount = Math.round(Math.random() * 10 + 3);
     } else {
     }
 
