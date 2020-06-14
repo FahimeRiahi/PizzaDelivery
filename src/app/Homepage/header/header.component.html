@@ -31,12 +31,13 @@
               <div class="col-md-2">Count</div>
               <div class="col-md-2"> Price </div>
             </mat-list-item>
-            <mat-list-item *ngFor="let item of  cartList">
+            <mat-list-item *ngFor="let item of  cartList;let i = index ">
               <img class="col-md-2" mat-card-image src="{{item.pizza.image}}"/>
-              <div class="col-md-2">{{item.pizza.name}}</div>
+              <div class="col-md-2" style="font-size: 10px">{{item.pizza.name}}</div>
               <div class="col-md-2">{{item.count}}</div>
-              <div class="col-md-6"> {{item.pizza.price | currency:'USD'}}
-                /{{convertCurrency(item.pizza.price) | currency:'EUR'}} </div>
+              <div class="col-md-4"> {{(item.pizza.price | currency:'USD').replace('.',',')}}
+                /{{(convertCurrency(item.pizza.price) | currency:'EUR').replace('.',',')}} </div>
+             <button class="col-md-2" mat-raised-button (click)="removeFromCart(i,item.pizza)">remove</button>
             </mat-list-item>
             </mat-list>
       <mat-divider></mat-divider>
@@ -85,11 +86,13 @@
             </mat-form-field>
            <div class="col-md-12 offset-md-1" *ngIf="deliveryAmount">
         <label class="col-md-12">Delivery Amount:{{deliveryAmount}}</label>
-        <label class="col-md-12">Total Amount of Order: {{totalCartPrice + deliveryAmount |  currency:'USD'}}
-          /{{convertCurrency(totalCartPrice + deliveryAmount) | currency:'EUR'}}</label>
+        <label class="col-md-12">Total Amount of Order: {{(totalCartPrice + deliveryAmount |  currency:'USD').replace('.',',')}}
+          /{{(convertCurrency(totalCartPrice + deliveryAmount) | currency:'EUR').replace('.',',')}}</label>
         </div>
           <div class="col-md-6 offset-md-6 text-right">
-            <button (click)="submitOrder(description.value , totalCartPrice + deliveryAmount);menu.close;" mat-raised-button>Submit Order</button>
+            <button
+              (click)="submitOrder(description.value , totalCartPrice + deliveryAmount);clearOrder()"
+              mat-raised-button>Submit Order</button>
           </div>
         </div></mat-card>
       </div>

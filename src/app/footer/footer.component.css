@@ -35,7 +35,7 @@ li {
 .google {
   max-width: 10em;
   max-height: 10em;
-  padding: 1em 5em;
+  padding: 1em 0em;
 }
 @media screen and (min-width: 1023px) {
   .main {

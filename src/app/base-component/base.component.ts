@@ -4,7 +4,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PizzaService} from '../services/pizza.service';
 import {Order} from '../services/models';
 import {ToastService} from '../services/toast.service';
-import {MyOrderListComponent} from '../my-order-list/my-order-list.component';
 
 export {FormGroup, Validators} from '@angular/forms';
 
@@ -17,7 +16,6 @@ export class BaseComponent {
   addressFormGroup: FormGroup;
   newAddress: any;
   newOrder = new Order();
-  ordersComponent: MyOrderListComponent;
 
   constructor(protected router: Router,
               protected service: PizzaService,
@@ -55,6 +53,12 @@ export class BaseComponent {
     }
   }
 
+  removeFromCart(index, pizza) {
+    this.cartList.splice(index, 1);
+    localStorage.setItem('cartList', JSON.stringify(this.cartList));
+    localStorage.setItem('myOrder', JSON.stringify(this.newOrder));
+  }
+
   convertCurrency(value) {
     return value * 1.13;
   }
@@ -75,7 +79,7 @@ export class BaseComponent {
 
   }
 
-  submitOrder(description: string = '' , totalPrice) {
+  submitOrder(description: string = '', totalPrice) {
     this.newOrder = JSON.parse(localStorage.getItem('myOrder'));
     if (this.newOrder.addressId) {
       this.newOrder.id = Math.round(Math.random() * 100);

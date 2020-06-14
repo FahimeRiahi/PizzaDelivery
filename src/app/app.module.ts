@@ -14,7 +14,6 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './Homepage/header/header.component';
 import {JumbotronComponent} from './Homepage/jumbotron/jumbotron.component';
 import {RecommendedComponent} from './Homepage/recommended/recommended.component';
-import {CardComponent} from './cards/Pizza-list/card.component';
 import {HomeComponent} from './Homepage/home.component';
 import {FooterComponent} from './footer/footer.component';
 import {BaseComponent} from './base-component/base.component';
@@ -36,7 +35,6 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
     HeaderComponent,
     JumbotronComponent,
     RecommendedComponent,
-    CardComponent,
     HomeComponent,
     FooterComponent,
     BaseComponent,
