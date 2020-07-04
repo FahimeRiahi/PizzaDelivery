@@ -27,7 +27,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, AfterViewI
   }
 
   clearOrder() {
-    this.cartList = [];
+    this.cartList = [{pizza: undefined, count: undefined}];
     this.initialAddressForm();
   }
 

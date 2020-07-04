@@ -16,7 +16,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 })
 export class MyOrderListComponent extends BaseComponent implements OnInit {
   dataSource: any;
-  columnsToDisplay = ['id', 'description', 'totalPrice', 'orderDate', 'address.name', 'address.phone', 'address.address'];
+  columnsToDisplay = ['description', 'totalPrice', 'createdAt', 'address.name', 'address.phone', 'address.address'];
   expandedColumnsToDisplay = ['name', 'count'];
   expandedElement: any;
   showOrders = false;
@@ -26,22 +26,23 @@ export class MyOrderListComponent extends BaseComponent implements OnInit {
   }
 
   loadMyOrders() {
-    this.service.getAllOrders().subscribe((res: any) => {
-      if (res.length > 0) {
+    this.apiService.get('orders', '').subscribe((res: any) => {
+      if (res.data.length > 0) {
         this.showOrders = true;
       } else {
         this.showOrders = false;
       }
-      this.dataSource = res.map((x, i) => ({
-        id: x.id,
-        pizzas: ({pizza: x.pizzas.split(',').map((n, index) => ({name: n, count: x.counts.split(',')[index]}))}),
-        description: x.description,
-        totalPrice: x.totalPrice,
-        address: this.service.getAddress(x.addressId).then(a => {
-          this.dataSource[i].address = a;
-        }),
-        orderDate: x.orderDate
-      }));
+      this.dataSource = res.data;
+      //   .map((x, i) => ({
+      //   id: x.id,
+      //   pizzas: ({pizza: x.pizzas.split(',').map((n, index) => ({name: n, count: x.counts.split(',')[index]}))}),
+      //   description: x.description,
+      //   totalPrice: x.totalPrice,
+      //   address: this.service.getAddress(x.addressId).then(a => {
+      //     this.dataSource[i].address = a;
+      //   }),
+      //   orderDate: x.orderDate
+      // }));
     });
   }
 }

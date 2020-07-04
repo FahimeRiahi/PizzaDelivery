@@ -3,7 +3,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PizzaService} from '../services/pizza.service';
 import {Order} from '../services/models';
+
 import {ToastService} from '../services/toast.service';
+import {ApiService} from '../services/api.service';
 
 export {FormGroup, Validators} from '@angular/forms';
 
@@ -19,6 +21,7 @@ export class BaseComponent {
 
   constructor(protected router: Router,
               protected service: PizzaService,
+              protected apiService: ApiService,
               protected toast: ToastService,
               protected activeRoute: ActivatedRoute,
               protected cdref: ChangeDetectorRef,
@@ -30,15 +33,15 @@ export class BaseComponent {
 
   addToCart(pizza, input) {
     const pizzaCount = parseInt(input.value, 10);
-    const myOrder = JSON.parse(localStorage.getItem('myOrder'));
-    const myCartList = JSON.parse(localStorage.getItem('cartList'));
-    this.newOrder = (myOrder === null || myOrder.counts === '') ? this.newOrder : myOrder;
-    this.cartList = (myCartList === null) ? this.cartList : myCartList;
-
-    this.newOrder.pizzas = this.newOrder.pizzas ? this.newOrder.pizzas.concat(',' + pizza.name) : pizza.name.toString();
-    this.newOrder.counts = this.newOrder.counts ? this.newOrder.counts.concat(',' + pizzaCount) : pizzaCount.toString();
+    // const myOrder = JSON.parse(localStorage.getItem('myOrder'));
+    // const myCartList = JSON.parse(localStorage.getItem('cartList'));
+    // this.newOrder = (myOrder === null || myOrder.counts === '') ? this.newOrder : myOrder;
+    // this.cartList = (myCartList === null) ? this.cartList : myCartList;
+    //
+    // this.newOrder.pizzas = this.newOrder.pizzas ? this.newOrder.pizzas.concat(',' + pizza.name) : pizza.name.toString();
+    // this.newOrder.counts = this.newOrder.counts ? this.newOrder.counts.concat(',' + pizzaCount) : pizzaCount.toString();
     if (pizzaCount > 0) {
-      const pizzaExist = this.cartList.find(x => x.pizza.id === pizza.id);
+      const pizzaExist = this.cartList.find(x => x.pizza._id === pizza._id);
       if (pizzaExist) {
         const index = this.cartList.indexOf(pizzaExist);
         this.cartList[index].count = pizzaCount;
@@ -50,7 +53,7 @@ export class BaseComponent {
 
       }
       localStorage.setItem('cartList', JSON.stringify(this.cartList));
-      localStorage.setItem('myOrder', JSON.stringify(this.newOrder));
+      // localStorage.setItem('myOrder', JSON.stringify(this.newOrder));
 
 
     } else {
@@ -60,15 +63,15 @@ export class BaseComponent {
 
   removeFromCart(index, item) {
     this.cartList.splice(index, 1);
-    this.newOrder = JSON.parse(localStorage.getItem('myOrder'));
-    const pizzas = this.newOrder.pizzas.split(',');
-    const counts = this.newOrder.counts.split(',');
-    pizzas.splice(index, 1);
-    counts.splice(index, 1);
-    this.newOrder.pizzas = pizzas.join(',');
-    this.newOrder.counts = counts.join(',');
+    // this.newOrder = JSON.parse(localStorage.getItem('myOrder'));
+    // const pizzas = this.newOrder.pizzas.split(',');
+    // const counts = this.newOrder.counts.split(',');
+    // pizzas.splice(index, 1);
+    // counts.splice(index, 1);
+    // this.newOrder.pizzas = pizzas.join(',');
+    // this.newOrder.counts = counts.join(',');
     localStorage.setItem('cartList', JSON.stringify(this.cartList));
-    localStorage.setItem('myOrder', JSON.stringify(this.newOrder));
+    // localStorage.setItem('myOrder', JSON.stringify(this.newOrder));
 
   }
 
@@ -77,31 +80,18 @@ export class BaseComponent {
   }
 
   saveAddress() {
-    this.newOrder = JSON.parse(localStorage.getItem('myOrder'));
     if (this.addressFormGroup.valid) {
-      this.newAddress = this.addressFormGroup.value;
-      this.newAddress.id = Math.round(Math.random() * 10);
-      this.service.createAddress(this.newAddress).subscribe((res: any) => {
-        this.newOrder.addressId = this.newAddress.id;
-        localStorage.setItem('myOrder', JSON.stringify(this.newOrder));
-        this.toast.success('Address saved successfully');
-      })
       this.deliveryAmount = Math.round(Math.random() * 10 + 3);
-    } else {
     }
-
   }
 
   submitOrder(description: string = '', totalPrice) {
-    debugger;
-    this.newOrder = JSON.parse(localStorage.getItem('myOrder'));
-    if (this.newOrder.addressId) {
-      this.newOrder.id = Math.round(Math.random() * 100);
-      this.newOrder.orderDate = new Date();
-      this.newOrder.username = JSON.parse(localStorage.getItem('username'));
+    if (this.addressFormGroup.valid) {
       this.newOrder.description = description;
       this.newOrder.totalPrice = totalPrice;
-      this.service.createOrder(this.newOrder).subscribe((res: any) => {
+      this.newOrder.address = this.addressFormGroup.value;
+      this.newOrder.pizzas = this.cartList as any;
+      this.apiService.post('order', this.newOrder).subscribe((res: any) => {
         this.toast.success('Order Completed Successfully');
         this.router.navigate(['/my-orders']);
         localStorage.removeItem('myOrder');

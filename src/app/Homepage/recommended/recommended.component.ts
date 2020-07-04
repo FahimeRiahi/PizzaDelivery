@@ -19,15 +19,15 @@ export class RecommendedComponent extends BaseComponent implements OnInit {
       quantity: ['', [Validators.required, Validators.min(1), Validators.max(10)]],
 
     });
-    this.service.searchPizza(this.pizzaType).subscribe((res: any) => {
-      this.pizzaList = res;
+    this.apiService.get('pizzas', '').subscribe((res: any) => {
+      this.pizzaList = res.data;
 
     });
   }
 
   findPizza(searchTerm) {
-    this.service.searchPizza(searchTerm.value).subscribe((res: any) => {
-      this.pizzaList = res;
+    this.apiService.get('pizzas', '?searchTerm=' + searchTerm.value).subscribe((res: any) => {
+      this.pizzaList = res.data;
 
     });
   }

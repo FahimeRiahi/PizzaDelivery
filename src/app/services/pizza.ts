@@ -1,5 +1,5 @@
 export class Pizza {
-  id: number;
+  _id: number;
   name: string;
   init: string;
   pizza: string;

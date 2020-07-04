@@ -1,10 +1,8 @@
+import {Pizza} from './pizza';
+
 export class Order {
-  id: number;
-  pizzas: string;
-  addressId: number;
-  counts: string;
-  username: string;
-  orderDate: Date;
+  pizzas: [{ pizza: Pizza, count: number }];
+  address: Address;
   description: string;
   totalPrice: number;
 }

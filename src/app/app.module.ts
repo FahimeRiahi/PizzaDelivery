@@ -48,7 +48,7 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
     ReactiveFormsModule,
     MatListModule,
     MatGridListModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
     ToasterModule,
     MatIconModule,
     MatMenuModule,
