@@ -1,5 +1,5 @@
 ﻿export class Config {
-  private static url = 'http://localhost:3000/'; /* if run api locally uncomment this line */
+  private static url = 'https://pizza-delivery-back-end.herokuapp.com/'; /* if run api locally uncomment this line */
 
   public static getUrl() {
     return this.url;
