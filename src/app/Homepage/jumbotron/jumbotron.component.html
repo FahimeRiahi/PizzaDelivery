@@ -1,15 +1,16 @@
 <section class="flex-column main-center cross-center">
   <h2>
-    Pizza delivery
+    Pizza Menu
   </h2>
   <form class="flex-row">
 <!--    <select [(ngModel)]="type" name="type" class="type" required>-->
 <!--      <option value="">Select Favorite Pizza Type</option>-->
 <!--      <option *ngFor="let type of types">{{ type }} </option>-->
 <!--    </select>-->
-    <input [(ngModel)]="type" #searchTerm name="type" class="type" required placeholder="Search your favorite Pizza"/>
+    <input [(ngModel)]="type" #searchTerm1 name="type" class="type" required placeholder="Search Pizza Name" (input)="recommendedComponent.findPizza(searchTerm1 , searchTerm)"/>
+    <input #searchTerm name="type" class="ingredient" required placeholder="Search Ingredients" (change)="recommendedComponent.findPizza(searchTerm1 , searchTerm)"/>
 
-    <button (click)="recommendedComponent.findPizza(searchTerm)">Find</button>
+<!--    <button (click)="recommendedComponent.findPizza(searchTerm)">Find</button>-->
   </form>
 </section>
 <app-recommended #recommendedComponent></app-recommended>

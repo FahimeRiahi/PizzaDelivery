@@ -7,6 +7,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTreeModule} from '@angular/material/tree';
+
+
 // Services
 import {InMemoryDataService} from './services/in-memory-data-service.service';
 // Components
@@ -48,6 +51,7 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
     ReactiveFormsModule,
     MatListModule,
     MatGridListModule,
+    MatTreeModule,
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
     ToasterModule,
     MatIconModule,

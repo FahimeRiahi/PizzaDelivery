@@ -13,14 +13,16 @@ h2 {
 }
 
 /**Form Styling**/
-select,
-button {
+.ingredient  {
   appearance: none;
-  border: none;
-  border-radius: 0px;
   padding: 1em;
-  background: #fff;
-}
+  border-radius: 0em 2.5em 2.5em 0em;
+  background: #FFF;
+  width: 300px;
+  outline: none;
+  border-left-color: rgb(195, 195, 195);
+  border-right-color: #333333}
+
 
 .type {
   border-radius: 2.5em 0em 0em 2.5em;
