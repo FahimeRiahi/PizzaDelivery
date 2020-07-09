@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTreeModule} from '@angular/material/tree';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 // Services
@@ -19,7 +20,7 @@ import {JumbotronComponent} from './Homepage/jumbotron/jumbotron.component';
 import {RecommendedComponent} from './Homepage/recommended/recommended.component';
 import {HomeComponent} from './Homepage/home.component';
 import {FooterComponent} from './footer/footer.component';
-import {BaseComponent} from './base-component/base.component';
+import {BaseComponent, DialogDataComponent} from './base-component/base.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
@@ -41,7 +42,8 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
     HomeComponent,
     FooterComponent,
     BaseComponent,
-    MyOrderListComponent
+    MyOrderListComponent,
+    DialogDataComponent
   ],
   imports: [BrowserModule,
     AppRoutingModule,
@@ -52,6 +54,7 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
     MatListModule,
     MatGridListModule,
     MatTreeModule,
+    MatDialogModule,
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
     ToasterModule,
     MatIconModule,
@@ -64,7 +67,9 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
     MatInputModule,
     MatTableModule],
   providers: [ToasterService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogDataComponent],
+
 })
 export class AppModule {
 }

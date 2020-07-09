@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component/base.component';
 import {FormGroup, Validators} from '@angular/forms';
-import {NestedTreeControl} from '@angular/cdk/tree';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
+
 // const converter = require('google-currency')
 
 @Component({
@@ -14,7 +13,6 @@ export class RecommendedComponent extends BaseComponent implements OnInit {
   @Input() pizzaType;
   pizzaList: any;
   addToCartForm: FormGroup;
-  treeControl = new NestedTreeControl<any>(node => node.ingredients);
 
   ngOnInit() {
     this.addToCartForm = this.formBuilder.group({
@@ -26,9 +24,10 @@ export class RecommendedComponent extends BaseComponent implements OnInit {
 
     });
   }
-  hasChild = (_: number, node: any) => !!node.ingredients && node.ingredients.length > 0;
 
-  findPizza(name , ingredients) {
+  findPizza(name, ingredients) {
+    this.ingredientSearchText = ingredients;
+
     this.apiService.get('pizzas', '?name=' + name.value + '&ingredients=' + ingredients.value).subscribe((res: any) => {
       this.pizzaList = res.data;
 
