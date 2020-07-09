@@ -160,7 +160,8 @@ export class DialogDataComponent implements AfterViewInit {
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   ngAfterViewInit(): void {
-    if (this.searchValue) {
+
+    if (this.searchValue.value) {
       for (let i = 0; i < this.treeControl.dataNodes.length; i++) {
         if (this.treeControl.dataNodes[i].name.toString().toLowerCase().match(this.searchValue.value.toString().toLowerCase())) {
           for (let j = 0; j < this.treeControl.dataNodes[i].level; j++) {

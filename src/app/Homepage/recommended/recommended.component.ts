@@ -27,8 +27,16 @@ export class RecommendedComponent extends BaseComponent implements OnInit {
 
   findPizza(name, ingredients) {
     this.ingredientSearchText = ingredients;
+    let params = '?';
+    if (name.value) {
+      params += 'name=' + name.value;
+    }
+    if (ingredients.value) {
+      params += 'ingredients=' + ingredients.value;
+    }
 
-    this.apiService.get('pizzas', '?name=' + name.value + '&ingredients=' + ingredients.value).subscribe((res: any) => {
+
+    this.apiService.get('pizzas', params).subscribe((res: any) => {
       this.pizzaList = res.data;
 
     });
